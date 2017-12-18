@@ -3,9 +3,9 @@ module FourEyes
     validates :action_type, :maker_id, :status, presence: true
 
     belongs_to :maker, polymorphic: true
-    belongs_to :checker, polymorphic: true
+    belongs_to :checker, polymorphic: true, optional: true
     belongs_to :assignable, polymorphic: true
-    belongs_to :object_resource, polymorphic: true
+    belongs_to :object_resource, polymorphic: true, optional: true
 
     def self.between_times(start_time, end_time)
       Action.where('created_at >= ? AND created_at < ?', start_time, end_time)
